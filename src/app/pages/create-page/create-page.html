@@ -10,7 +10,12 @@
                         (formReady)="currentForm = $event"
                         ></app-personal-information>
                     }
-                    @case (1) {
+                    @case (1){
+                        <app-description
+                        (formValid)="currentForm=$event">
+                        </app-description>
+                    }
+                    @case (2) {
                         <app-experience
                         (formReady)="currentForm = $event"></app-experience>
                     }
