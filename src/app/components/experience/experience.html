@@ -1,0 +1,55 @@
+<h3 class="mb-4">Experience</h3>
+<form [formGroup]="form" class="d-flex flex-column gap-4">
+
+    <div formArrayName="experiences">
+       
+        @for (experience of experiences.controls; track $index) {
+            <div class="boarder rounded p-3" [formGroupName]="$index">
+                <!-- Position -->
+                <div class="mb-2">
+                    <label class="form-label fw-bold" >Position <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="position" placeholder="e.g. Software Engineer" />
+                  </div>
+            
+                  <!-- Company -->
+                  <div class="mb-2">
+                    <label class="form-label fw-bold">Company <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="company" required placeholder="e.g. OpenAI" />
+                  </div>
+            
+                  <!-- Description -->
+                  <div class="mb-2">
+                    <label class="form-label fw-bold">Description</label>
+                    <textarea class="form-control" rows="3" formControlName="description"></textarea>
+                  </div>
+            
+                  <!-- Dates -->
+                  <div class="row mb-2">
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold">Start Date <span class="text-danger">*</span></label>
+                      <input type="date" class="form-control" required formControlName="startDate" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold">End Date <span class="text-danger">*</span></label>
+                      <input type="date" class="form-control" required formControlName="endDate" />
+                    </div>
+                  </div>
+            
+                  <!-- Remove Button -->
+                  <div class="text-end">
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeExperience($index)" [disabled]="experiences.length === 1">
+                      Remove
+                    </button>
+                  </div>
+            </div>
+            
+       
+        }
+    </div>
+  
+    <!-- Add New Experience -->
+    <button type="button" class="btn btn-outline-primary mt-2" (click)="addExperience()">
+      + Add Another Experience
+    </button>
+  </form>
+  

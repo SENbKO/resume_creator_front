@@ -1,0 +1,26 @@
+<div class="flex-grow-1 d-flex flex-column justify-content-center h-100">
+    <form [formGroup]="mainInfoGroup" (ngSubmit)="submit()" >
+      <h3 class="mb-4">Personal Information</h3>
+
+      <!-- Row 1: Name + Surname -->
+      <div class="row mb-3">
+        <div class="col">
+          <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+        </div>
+        <div class="col">
+          <input formControlName="secondName" type="text" class="form-control" placeholder="Surname">
+        </div>
+      </div>
+
+      <!-- Row 2: Position + Email -->
+      <div class="row mb-3">
+        <div class="col">
+          <input formControlName="position" type="text" class="form-control" placeholder="Position">
+        </div>
+        <div class="col">
+          <input formControlName="email" type="email" class="form-control" placeholder="Email">
+        </div>
+      </div>
+
+    </form>
+</div>
