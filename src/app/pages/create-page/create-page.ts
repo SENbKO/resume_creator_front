@@ -32,6 +32,7 @@ export class CreatePage {
   @ViewChild(PersonalInformation) personalInformation !: InformationInterface;
   @ViewChild(Experience) experience !: InformationInterface;
   @ViewChild(Description) description !: InformationInterface;
+  @ViewChild(Skills) skills !: InformationInterface;
   currentForm : FormGroup | null = null;
   currentStepIndex = 0;
 
@@ -58,8 +59,11 @@ export class CreatePage {
           this.description.addInfo();
           break;
       case 2:  
-          this.experience.addInfo();
+          this.skills.addInfo();
           break;
+      case 3:
+        this.experience.addInfo();
+        break;
     }
   }
   

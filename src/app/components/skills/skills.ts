@@ -1,20 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { InformationInterface } from '../../model/information-interface';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })
-export class Skills {
+export class Skills implements InformationInterface{
+  @Output() formValid = new EventEmitter<FormGroup>;
+
+  addInfo(): void {
+    if(this.skills.length!==0){
+      localStorage.setItem('skills', JSON.stringify(this.skills));
+    }
+    console.log('skills added');
+    
+  }
+
+  ngOnInit(){
+    this.formValid.emit(this.skillInput);
+  }
 
   skills: string[] = [];
+  skillInput = new FormGroup({
+    skills: new FormControl('', Validators.required)
+  });
 
   handleKeyDown(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
 
     // Add skill when spacebar is pressed and text isn't empty
-    if (event.key === ' ' && input.value.trim() !== '') {
+    if (event.key === ',' && input.value.trim() !== '') {
       event.preventDefault(); // prevent actual space
       const skill = input.value.trim();
 

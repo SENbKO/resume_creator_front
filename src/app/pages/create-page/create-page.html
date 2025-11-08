@@ -16,8 +16,9 @@
                         </app-description>
                     }
                     @case (2){
-                        <app-skills>
-
+                        <app-skills
+                        (formValid)="currentForm=$event">
+                                
                         </app-skills>
                     }
                     @case (3) {
