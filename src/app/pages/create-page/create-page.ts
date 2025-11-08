@@ -11,10 +11,11 @@ import { ResumeService } from '../../services/resume-service';
 import { ModelExperience } from '../../model/experience';
 import { InformationInterface } from '../../model/information-interface';
 import { Description } from '../../components/description/description';
+import { Skills } from "../../components/skills/skills";
 
 @Component({
   selector: 'app-create-page',
-  imports: [ProgressBar, PersonalInformation, Experience, Description],
+  imports: [ProgressBar, PersonalInformation, Experience, Description, Skills],
   templateUrl: './create-page.html',
   styleUrl: './create-page.css'
 })
@@ -53,7 +54,6 @@ export class CreatePage {
       case 0: 
           this.personalInformation.addInfo();
           break;  
-      //         break;
       case 1: 
           this.description.addInfo();
           break;

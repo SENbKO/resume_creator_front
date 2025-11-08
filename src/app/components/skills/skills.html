@@ -1,1 +1,32 @@
-<p>skills works!</p>
+<div class="container p-4">
+    <h5>Skills</h5>
+  
+    <!-- Input Field -->
+    <div class="border rounded p-2 d-flex flex-wrap align-items-center" (click)="inputElement.focus()">
+      <!-- Render each skill -->
+       @for(skill of skills; track $index){
+        <span 
+        class="badge bg-primary me-2 mb-2 d-flex align-items-center">
+        {{ skill }}
+        <button
+          type="button"
+          class="btn-close btn-close-white ms-2"
+          aria-label="Remove"
+          (click)="removeSkill(skill)"
+        ></button>
+        </span>
+       }
+    
+  
+      <!-- Input for adding skills -->
+      <input
+        #inputElement
+        type="text"
+        class="border-0 flex-grow-1 mb-2"
+        placeholder="Type a skill and press space"
+        (keydown)="handleKeyDown($event)"
+      />
+    </div>
+
+  </div>
+  
